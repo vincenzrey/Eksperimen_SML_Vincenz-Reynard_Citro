@@ -78,6 +78,6 @@ def preprocess_data(
 
 if __name__ == "__main__":
     preprocess_data(
-        input_path="F:\\Kuliah\\Semester 5 (asah)\\SMSML_Vincenz-Reynard-Citro\\dataset_raw\\obesity_data.csv",
-        output_dir="F:\\Kuliah\\Semester 5 (asah)\\SMSML_Vincenz-Reynard-Citro\\preprocessing\\dataset_preprocessing"
+        input_path="F:\Kuliah\Semester 5 (asah)\SMSML_Vincenz-Reynard-Citro\dataset_raw\obesity_data.csv",
+        output_dir="F:\Kuliah\Semester 5 (asah)\SMSML_Vincenz-Reynard-Citro\preprocessing\dataset_preprocessing"
     )
