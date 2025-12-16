@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 
 def preprocess_data(
     input_path: str,
-    output_dir: str,
+    output_path: str,
     target_column: str = "ObesityCategory",
     test_size: float = 0.2,
     random_state: int = 42
@@ -16,11 +16,9 @@ def preprocess_data(
     data = pd.read_csv(input_path)
 
     # 2. Encoding Kategorikal
-    cat_columns = data.select_dtypes(include='object').columns
-    cat_columns = cat_columns.drop(target_column, errors='ignore')
-
     encoder = LabelEncoder()
-    for col in cat_columns:
+    categorical_columns = ['Gender', 'ObesityCategory']
+    for col in categorical_columns:
         data[col] = encoder.fit_transform(data[col])
 
     # 3. Normalisasi Numerik
@@ -44,15 +42,15 @@ def preprocess_data(
     )
 
     # 6. Simpan Dataset
-    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(output_path, exist_ok=True)
 
-    X_train.to_csv(f"{output_dir}/X_train.csv", index=False)
-    X_test.to_csv(f"{output_dir}/X_test.csv", index=False)
+    X_train.to_csv(f"{output_path}/X_train.csv", index=False)
+    X_test.to_csv(f"{output_path}/X_test.csv", index=False)
     pd.DataFrame(y_train, columns=[target_column]).to_csv(
-        f"{output_dir}/y_train.csv", index=False
+        f"{output_path}/y_train.csv", index=False
     )
     pd.DataFrame(y_test, columns=[target_column]).to_csv(
-        f"{output_dir}/y_test.csv", index=False
+        f"{output_path}/y_test.csv", index=False
     )
 
     print("Preprocessing selesai. Dataset siap dilatih.")
